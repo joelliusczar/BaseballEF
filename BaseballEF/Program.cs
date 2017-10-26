@@ -14,7 +14,7 @@ namespace BaseballEF
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions() {IsolationLevel = IsolationLevel.Serializable }))
             {
                 BaseballDBEntities1 entities = BaseballDBEntities1.GetNew();
-                League l = entities.Leagues.First();
+                var t = entities.GetTeamByPK(3).FirstOrDefault();
 
                 scope.Complete();
             }

@@ -84,6 +84,9 @@
       <DependentUpon>BaseballModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="EFInterception.cs" />
+    <Compile Include="GetTeamByPK_Result.cs">
+      <DependentUpon>BaseballModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="League.cs">
       <DependentUpon>BaseballModel.tt</DependentUpon>
     </Compile>

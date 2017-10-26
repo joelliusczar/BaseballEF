@@ -12,7 +12,7 @@ namespace BaseballEF
         public static BaseballDBEntities1 GetNew()
         {
             BaseballDBEntities1 instance = new BaseballDBEntities1();
-
+            instance.SetupInterceptors();
             return instance;
         }
 

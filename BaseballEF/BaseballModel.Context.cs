@@ -12,6 +12,8 @@ namespace BaseballEF
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class BaseballDBEntities1 : DbContext
     {
@@ -28,5 +30,14 @@ namespace BaseballEF
         public virtual DbSet<League> Leagues { get; set; }
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+    
+        public virtual ObjectResult<GetTeamByPK_Result> GetTeamByPK(Nullable<int> teamnum)
+        {
+            var teamnumParameter = teamnum.HasValue ?
+                new ObjectParameter("teamnum", teamnum) :
+                new ObjectParameter("teamnum", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTeamByPK_Result>("GetTeamByPK", teamnumParameter);
+        }
     }
 }
